@@ -1,5 +1,16 @@
 import { $createCodeHighlightNode, CodeHighlightNode } from '@lexical/code'
 
-console.log($createCodeHighlightNode, CodeHighlightNode)
+import {createEditor} from 'lexical';
 
-console.log($createCodeHighlightNode("waga", "eaga"))
+const config = {
+  namespace: 'MyEditor',
+  onError: console.error,
+  nodes: [CodeHighlightNode]
+};
+
+const editor = createEditor(config);
+
+editor.update(() => {
+    const node = $createCodeHighlightNode("test", "cpp")
+    console.log(node)
+})
